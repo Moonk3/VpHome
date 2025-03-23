@@ -26,7 +26,7 @@
                                 {{-- <a href="{{ route('fe.auth.login') }}" class="cart-text">Đăng nhập</a> --}}
                                 @if(Auth::guard('customer')->check())
     <a href="{{ route('customer.profile') }}">Tài khoản</a>
-    <a href="{{ route('customer.logout') }}">Đăng xuất</a>
+    {{-- <a href="{{ route('customer.logout') }}">Đăng xuất</a> --}}
 @else
     <a href="{{ route('fe.auth.login') }}">Đăng nhập</a>
 @endif

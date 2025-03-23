@@ -61,7 +61,7 @@ use App\Http\Controllers\Backend\Crm\ConstructionController;
 use App\Http\Controllers\Ajax\ConstructController as AjaxConstructController;
 use App\Http\Controllers\Ajax\CustomerController as AjaxCustomerController;
 
-
+use App\Http\Controllers\ChatbotController;
 
 //@@useController@@
 
@@ -333,7 +333,7 @@ Route::group(['middleware' => ['admin','locale','backend_default_locale']], func
       Route::get('{id}/delete', [SlideController::class, 'delete'])->where(['id' => '[0-9]+'])->name('slide.delete');
       Route::delete('{id}/destroy', [SlideController::class, 'destroy'])->where(['id' => '[0-9]+'])->name('slide.destroy');
    });
-
+ 
    Route::group(['prefix' => 'widget'], function () {
       Route::get('index', [WidgetController::class, 'index'])->name('widget.index');
       Route::get('create', [WidgetController::class, 'create'])->name('widget.create');
@@ -488,3 +488,8 @@ Route::group(['middleware' => ['admin','locale','backend_default_locale']], func
 Route::get('admin', [AuthController::class, 'index'])->name('auth.admin')->middleware('login');
 Route::get('logout', [AuthController::class, 'logout'])->name('auth.logout');
 Route::post('login', [AuthController::class, 'login'])->name('auth.login');
+
+// Chatbot
+// Route::post('/chatbot', [ChatbotController::class, 'chat']);
+// Route::post('/chatbot', [ChatbotController::class, 'handleChat'])->name('chatbot.send');
+Route::post('/chatbot', [ChatbotController::class, 'chat'])->name('chatbot.send');

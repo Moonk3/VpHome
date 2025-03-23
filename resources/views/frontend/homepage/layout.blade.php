@@ -20,6 +20,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
         @yield('content')
 
+        {{-- @include('frontend.chatbot') --}}
         @include('frontend.component.footer')
         @include('frontend.component.script')
         {{-- @include('frontend.component.popup') --}}
