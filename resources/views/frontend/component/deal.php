@@ -31,7 +31,7 @@
         <div class="uk-width-large-3-5">
             <div class="info">
                 <div class="brand">Apple</div>
-                <div class="title"><a href="" title="">2022 Apple iMac with Retina 5K Display 8GB RAM, 256GB SSD</a></div>
+                <div class="title"><a href="" title="">2025 Apple iMac with Retina 5K Display 8GB RAM, 256GB SSD</a></div>
                 <div class="rating">
                     <div class="uk-flex uk-flex-middle">
                         <div class="star">

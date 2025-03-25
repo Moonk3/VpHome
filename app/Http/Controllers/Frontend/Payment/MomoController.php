@@ -110,7 +110,7 @@ class MomoController extends FrontendController
             $response = array();
             try {
                
-                //Checksum
+                //Checksum 
                 $rawData = "accessKey=".$accessKey;
                 $rawData .= "&amount=".$_POST['amount'];
                 $rawData .= "&extraData=".$_POST['extraData'];

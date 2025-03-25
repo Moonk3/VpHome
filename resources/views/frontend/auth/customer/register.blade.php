@@ -40,7 +40,7 @@
                                     <div class="form-row">
                                         <input 
                                             type="password" 
-                                            name="password"
+                                            name="password" 
                                             class="input-text" 
                                             placeholder="Mật khẩu"
                                             autocomplete="off"
