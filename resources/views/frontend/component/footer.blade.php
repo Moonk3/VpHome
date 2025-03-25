@@ -66,7 +66,8 @@
         </div>
     </div>
     <div class="copyright uk-text-center">
-        © Copyright 2024, All Rights Reserved - Design by:  {{ $system['homepage_brand'] }}
+        © Copyright 2025, All Rights Reserved - Design by:  Le Van Minh
+        {{ $system['homepage_brand'] }}
     </div>
 </footer>
 <div class="bottom-support-online">

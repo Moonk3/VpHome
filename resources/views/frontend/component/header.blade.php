@@ -43,11 +43,12 @@
                             <div class="uk-flex uk-flex-middle">
                                 <a href="{{ write_url('thanh-toan') }}" class="cart-text">Giỏ Hàng</a>
                                 <div class="cart-mini">
-                                    <span class="number">0</span>
+                                    {{-- <span class="number">0</span> --}}
                                     <img src="frontend/resources/img/shopping-cart.png" alt="cart image">
                                 </div>
                             </div>
                         </div>
+                        {{-- note --}}
                         <div class="header-hotline">
                             <div class="text">Hotline</div>
                             <div class="hotline-number">{{ $system['contact_hotline'] }}</div>
