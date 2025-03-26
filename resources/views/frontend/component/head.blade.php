@@ -29,6 +29,7 @@
 <meta name="twitter:image" content="{{ $seo['meta_image'] }}" />
 
 <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+<link rel="stylesheet" href="{{ asset('frontend/resources/login.css') }}">
 <!-- <link href="backend/css/bootstrap.min.css" rel="stylesheet"> -->
 @php
     $coreCss = [

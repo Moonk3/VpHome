@@ -464,6 +464,7 @@ ul li{
     text-transform: uppercase;
     padding-right:30px;
     font-size: 12px;
+    white-space: nowrap;
 }
 .category-heading:before{
     content:'';
@@ -474,6 +475,7 @@ ul li{
     width:26px;
     height:24px;
     background: url('img/Sort.png');
+    
 }
 
 .categories:hover .category-dropdown{
@@ -2750,3 +2752,4 @@ bottom-support-online .animated.infinite {
         margin-top: 4px;
     }
 }
+/* LOGIN */

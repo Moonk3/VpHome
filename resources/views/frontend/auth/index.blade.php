@@ -32,7 +32,7 @@
                                         class="input-text"
                                     >
                                 </div>
-                                <button type="submit" value="login" name="login">Đăng nhập</button>
+                                <button id="login-btn" type="submit" value="login" name="login">Đăng nhập</button>
                                 <div class="form-row forgot-password">
                                     <div class="uk-flex uk-flex-middle">
                                         <a href="{{ route('forgot.customer.password') }}">Quên mật khẩu</a>
