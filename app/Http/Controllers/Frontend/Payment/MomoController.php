@@ -25,17 +25,15 @@ class MomoController extends FrontendController
     }
 
 
-    public function momo_return(Request $request){
-
-
+    public function momo_return(Request $request)
+    {
         $momoConfig = momoConfig();
-
-        $secretKey = $momoConfig['secretKey']; //Put your secret key in there
-        $partnerCode = $momoConfig['partnerCode']; //Put your secret key in there
-        $accessKey = $momoConfig['accessKey']; //Put your secret key in there
-
+    
+        $secretKey = $momoConfig['secretKey']; 
+        $partnerCode = $momoConfig['partnerCode']; 
+        $accessKey = $momoConfig['accessKey']; 
+    
         if (!empty($_GET)) {
-           
             $rawData = "accessKey=".$accessKey;
             $rawData .= "&amount=".$_GET['amount'];
             $rawData .= "&extraData=".$_GET['extraData'];
@@ -49,36 +47,44 @@ class MomoController extends FrontendController
             $rawData .= "&responseTime=".$_GET['responseTime'];
             $rawData .= "&resultCode=".$_GET['resultCode'];
             $rawData .= "&transId=".$_GET['transId'];
-
-
-
-           
+    
             $partnerSignature = hash_hmac("sha256", $rawData, $secretKey);
             $m2signature = $_GET['signature'];
-
-
-            if($partnerSignature == $m2signature){
-                $orderId = $_GET['orderId'];
-                $order = $this->orderRepository->findByCondition([
-                    ['code', '=', $orderId],
-                ], false, ['products']);
-
+    
+            // ✅ Kiểm tra chữ ký bảo mật
+            if ($partnerSignature !== $m2signature) {
+                return redirect()->route('cart.checkout')->with('error', 'Xác thực thất bại, vui lòng thử lại.');
+            }
+    
+            // ✅ Kiểm tra trạng thái thanh toán Momo
+            if ($_GET['resultCode'] != '0') {
+                return redirect()->route('cart.checkout')->with('error', 'Giao dịch bị từ chối: ' . $_GET['message']);
+            }
+    
+            // ✅ Nếu giao dịch thành công, xử lý đơn hàng
+            $orderId = $_GET['orderId'];
+            $order = $this->orderRepository->findByCondition([
+                ['code', '=', $orderId],
+            ], false, ['products']);
+    
+            if (!$order) {
+                return redirect()->route('cart.checkout')->with('error', 'Không tìm thấy đơn hàng.');
+            }
+    
+            // ✅ Cập nhật đơn hàng nếu chưa được thanh toán
+            if ($order->payment !== 'paid') {
                 $payload['payment'] = 'paid';
                 $payload['confirm'] = 'confirm';
-                $flag = $this->orderService->updatePaymentOnline($payload, $order);
+                $this->orderService->updatePaymentOnline($payload, $order);
             }
-
+    
+            // ✅ Trả về trang xác nhận thanh toán
             $momo = [
                 'm2signature' => $m2signature,
                 'partnerSignature' => $partnerSignature,
                 'message' => $_GET['message'],
             ];
-            
-            $orderId = $_GET['orderId'];
-            $order = $this->orderRepository->findByCondition([
-                ['code', '=', $orderId],
-            ], false, ['products']);
-
+    
             $system = $this->system;
             $seo = [
                 'meta_title' => 'Thông tin thanh toán mã đơn hàng #'.$orderId,
@@ -87,7 +93,7 @@ class MomoController extends FrontendController
                 'meta_image' => '',
                 'canonical' => write_url('cart/success', TRUE, TRUE),
             ];
-            
+    
             $template = 'frontend.cart.component.momo';
             return view('frontend.cart.success', compact(
                 'seo',
@@ -98,7 +104,9 @@ class MomoController extends FrontendController
             ));
         }
     
+        return redirect()->route('cart.checkout')->with('error', 'Dữ liệu phản hồi không hợp lệ.');
     }
+    
 
     public function momo_ipn(){
         http_response_code(200); //200 - Everything will be 200 Oke
@@ -133,8 +141,18 @@ class MomoController extends FrontendController
                         ['code', '=', $orderId],
                     ], false, ['products']);
 
-                    $payload['payment'] = 'paid';
-                    $payload['confirm'] = 'confirm';
+                    // $payload['payment'] = 'paid';
+                    // $payload['confirm'] = 'confirm';
+                    if ($_POST['resultCode'] == 0) { // Thành công
+                        $payload['payment'] = 'paid';
+                        $payload['confirm'] = 'confirm';
+                    } elseif ($_POST['resultCode'] == 1006) { // Hủy giao dịch
+                        $payload['payment'] = 'unpaid';
+                        $payload['confirm'] = 'pending';
+                    } else { // Các lỗi khác
+                        $payload['payment'] = 'failed';
+                        $payload['confirm'] = 'pending';
+                    }
                     $flag = $this->orderService->updatePaymentOnline($payload, $order);
 
                 } else {

@@ -78,26 +78,51 @@ class CartController extends FrontendController
         
     }
 
+    // public function store(StoreCartRequest $request){
+    //     $system = $this->system;
+    //     $order = $this->cartService->order($request, $system);
+    //     if($order['flag']){
+    //         if($order['order']->method !== 'cod'){
+    //             $response = $this->paymentMethod($order);
+    //             if($response['errorCode'] == 0){
+    //                 return redirect()->away($response['url']);
+    //             }
+    //         }
+    //         return redirect()->route('cart.success', ['code' => $order['order']->code])->with('success','Đặt hàng thành công');
+    //     }
+    //     return redirect()->route('cart.checkout')->with('error','Đặt hàng không thành công. Hãy thử lại');
+    // }
     public function store(StoreCartRequest $request){
         $system = $this->system;
         $order = $this->cartService->order($request, $system);
-        if($order['flag']){
-            if($order['order']->method !== 'cod'){
+    
+        if ($order['flag']) {
+            if ($order['order']->method !== 'cod') {
                 $response = $this->paymentMethod($order);
-                if($response['errorCode'] == 0){
+                if ($response['errorCode'] == 0) {
                     return redirect()->away($response['url']);
+                } else {
+                    return redirect()->route('cart.checkout')->with('error', 'Thanh toán thất bại.');
                 }
             }
-            return redirect()->route('cart.success', ['code' => $order['order']->code])->with('success','Đặt hàng thành công');
+            return redirect()->route('cart.success', ['code' => $order['order']->code])->with('success', 'Đặt hàng thành công');
         }
-        return redirect()->route('cart.checkout')->with('error','Đặt hàng không thành công. Hãy thử lại');
+    
+        return redirect()->route('cart.checkout')->with('error', 'Đặt hàng không thành công. Hãy thử lại');
     }
-
+    
     public function success($code){
         $order = $this->orderRepository->findByCondition([
             ['code', '=', $code],
         ], false, ['products']);
         
+        if (!$order) {
+            return redirect()->route('cart.checkout')->with('error', 'Không tìm thấy đơn hàng.');
+        }
+    
+        if ($order->payment !== 'paid') {
+            return redirect()->route('cart.checkout')->with('error', 'Thanh toán chưa thành công hoặc bị hủy.');
+        }
         $seo = [
             'meta_title' => 'Thanh toán đơn hàng thành công',
             'meta_keyword' => '',
