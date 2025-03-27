@@ -9,7 +9,7 @@
                             
                         </div>
                     </div>
-                    <div class="uk-width-large-1-3">
+                    <div class="uk-width-large-1-2">
                         <div class="login-form">
                             <form action="{{ route('fe.auth.dologin') }}" class="uk-form form">
                                 @csrf

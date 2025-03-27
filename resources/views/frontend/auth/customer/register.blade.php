@@ -8,7 +8,7 @@
                         <div class="register-wrapper">
                         </div>
                     </div>
-                    <div class="uk-width-large-1-3">
+                    <div class="uk-width-large-1-2">
                         <div class="register-form">
                             <form action="{{ route('customer.reg')}}" method="post">
                                 @csrf
@@ -82,9 +82,15 @@
                                     </div>
                                     <button type="submit" class="btn btn-primary block full-width m-b">Đăng ký</button>  
                             </form>
-                            <p class="m-t mt5">
+                            {{-- <p class="m-t mt5">
                                 <small>{{ $system['homepage_brand'] }} 2025</small>
-                            </p>
+                            </p> --}} 
+                            
+                            {{-- uk-flex uk-flex-middle --}}
+                            {{-- uk-grid uk-grid-medium --}}
+                            <div class="form-row uk-text-center" style="margin-top: 10px;">
+                                <a style="color: #d32f2f" href="{{ route('fe.auth.login') }}">Đăng nhập nếu có tài khoản</a>
+                            </div>
                         </div>
                     </div>
                 </div>
