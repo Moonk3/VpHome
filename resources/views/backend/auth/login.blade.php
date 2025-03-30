@@ -5,7 +5,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <title>LARAVEL CMS 01</title>
+        {{-- <title>LARAVEL CMS 01</title> --}}
 
         <link href="{{ asset('backend/css/bootstrap.min.css') }}" rel="stylesheet">
         <link href="{{ asset('backend/font-awesome/css/font-awesome.css') }}" rel="stylesheet">
@@ -22,25 +22,25 @@
             <div class="row">
 
                 <div class="col-md-6">
-                    <h2 class="font-bold">Welcome to IN+</h2>
-
+                    <h2 class="font-bold">Chào mừng đến với hệ thống quản lý VpHome!</h2>
+                
                     <p>
-                        Perfectly designed and precisely prepared admin theme with over 50 pages with extra new web app views.
+                        Đây là nơi bạn có thể dễ dàng theo dõi và quản lý các sản phẩm, đơn hàng, cũng như thông tin khách hàng một cách nhanh chóng.
                     </p>
-
+                
                     <p>
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
+                        Giao diện thân thiện, trực quan giúp bạn làm việc hiệu quả mà không mất nhiều thời gian làm quen.
                     </p>
-
+                
                     <p>
-                        When an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                        Mọi thao tác từ cập nhật sản phẩm, kiểm soát kho hàng đến xử lý đơn hàng đều được thực hiện chỉ với vài cú nhấp chuột.
                     </p>
-
+                
                     <p>
-                        <small>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</small>
+                        <small>Hãy cùng VpHome đơn giản hóa quy trình quản lý và nâng cao hiệu suất làm việc!</small>
                     </p>
-
                 </div>
+                
                 <div class="col-md-6">
                     <div class="ibox-content">
                       
@@ -71,25 +71,25 @@
                             </div>
                             <button type="submit" class="btn btn-success block full-width m-b">Đăng nhập</button>
 
-                            <a href="#">
+                            {{-- <a href="#">
                                 <small>Forgot password?</small>
-                            </a>
+                            </a> --}}
                         </form>
-                        <p class="m-t">
+                        {{-- <p class="m-t">
                             <small>Newbie Code we app framework base on Bootstrap 3 &copy; 2014</small>
-                        </p>
+                        </p> --}}
                     </div>
                 </div>
             </div>
             <hr/>
-            <div class="row">
+            {{-- <div class="row">
                 <div class="col-md-6">
                     Copyright Example Company
                 </div>
                 <div class="col-md-6 text-right">
-                <small>© 2023</small>
+                <small>© 2025</small>
                 </div>
-            </div>
+            </div> --}}
         </div>
 
     </body>
