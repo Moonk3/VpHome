@@ -163,5 +163,79 @@ button:hover {
 }
 /* RESGITER - END */
 /* PROFILE - START */
+/* Container chính */
+.profile-container {
+    background-color: #f9f9f9;
+    padding: 20px 0;
+}
 
+/* Bố cục chung */
+.uk-container {
+    max-width: 1200px;
+}
+
+/* Sidebar */
+.uk-width-large-1-2 {
+    
+    margin: 0 auto;
+    
+}
+
+/* Phần hồ sơ */
+.panel-profile {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Tiêu đề hồ sơ */
+.panel-head h2 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.panel-head .description {
+    font-size: 14px;
+    color: #777;
+}
+
+/* Form */
+.profile-form .form-row {
+    margin-bottom: 15px;
+}
+
+.uk-form-label {
+    font-weight: bold;
+    color: #333;
+}
+
+.input-text {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+/* Nút lưu thông tin */
+button[name="send"] {
+    background: #da2229;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button[name="send"]:hover {
+    background: #da2229;
+}
+.profile-form{
+    width: 500px;
+    margin: 0 auto;
+}
 /* PROFILE - END */

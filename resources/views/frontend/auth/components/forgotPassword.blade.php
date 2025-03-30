@@ -3,7 +3,7 @@
     <div class="forgotpassword-container">
         <div class="uk-container uk-container-center">
             <div class="uk-grid uk-grid-medium">
-                <div class="uk-width-large-2-3"></div>
+                <div class="uk-width-large-1-3"></div>
                 <div class="uk-width-large-1-3">
                     <div class="register-form">
                         <form action="{{ route($route) }}" method="get">

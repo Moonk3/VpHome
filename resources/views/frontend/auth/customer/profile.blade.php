@@ -10,9 +10,9 @@
                     <div class="panel-profile">
                         <div class="panel-head">
                             <h2 class="heading-2"><span>Hồ sơ của tôi</span></h2>
-                            <div class="description">
+                            {{-- <div class="description">
                                 Quản lý thông tin hồ sơ để bảo mật tài khoản
-                            </div>
+                            </div> --}}
                         </div>
                         <div class="panel-body">
                             @include('backend/dashboard/component/formError')
