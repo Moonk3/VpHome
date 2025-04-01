@@ -56,7 +56,7 @@
                         $catCanonical = write_url($category->languages->first()->pivot->canonical)
                     @endphp
                     <div class="panel-product">
-                        <div class="main-heading">
+                        <div class="main-heading"> 
                             <div class="panel-head">
                                 <div class="uk-flex uk-flex-middle uk-flex-space-between">
                                     <h2 class="heading-1"><a href="{{ $catCanonical }}" title="{{ $catName }}">{{ $catName }}</a></h2>
