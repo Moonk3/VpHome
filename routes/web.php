@@ -31,7 +31,7 @@ use App\Http\Controllers\Ajax\SlideController as AjaxSlideController;
 use App\Http\Controllers\Ajax\ProductController as AjaxProductController;
 use App\Http\Controllers\Ajax\SourceController as AjaxSourceController;
 use App\Http\Controllers\Ajax\CartController as AjaxCartController;
-use App\Http\Controllers\Ajax\OrderController as AjaxOrderController;
+use App\Http\Controllers\Ajax\OrderController as AjaxOrderController; 
 use App\Http\Controllers\Ajax\ReviewController as AjaxReviewController;
 use App\Http\Controllers\Ajax\PostController as AjaxPostController;
 use App\Http\Controllers\Ajax\DistributionController as AjaxDistributionController;
@@ -492,4 +492,4 @@ Route::post('login', [AuthController::class, 'login'])->name('auth.login');
 // Chatbot
 // Route::post('/chatbot', [ChatbotController::class, 'chat']);
 // Route::post('/chatbot', [ChatbotController::class, 'handleChat'])->name('chatbot.send');
-Route::post('/chatbot', [ChatbotController::class, 'chat'])->name('chatbot.send');
+Route::post('/chatbot', [ChatbotController::class, 'chat'])->name('chatbot.send'); 

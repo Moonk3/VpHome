@@ -14,7 +14,7 @@ use App\Classes\Nestedsetbie;
 use App\Models\Language;
 
 class {$class}Controller extends Controller
-{
+{ 
     protected ${module}Service;
     protected ${module}Repository;
     protected $languageRepository;
