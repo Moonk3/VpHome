@@ -17,6 +17,6 @@ class ProductVariantLanguage extends Model
 
     protected $table = 'product_variant_language';
 
-
+ 
     public $timestamps = true;
 }
