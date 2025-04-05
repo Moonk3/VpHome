@@ -1305,7 +1305,8 @@ ul li{
     width: 1138px !important;
     margin:20px auto !important;
 }
-.swiper-container-thumbs{
+/* slide nhỏ */
+/* .swiper-container-thumbs{
     overflow: hidden;
 }
 .swiper-container-thumbs .image{
@@ -1316,7 +1317,8 @@ ul li{
     line-height: 108px;
     cursor: pointer;
     height:85px;
-}
+} */
+/* end */
 .quantity-button{
     cursor: pointer;
 }
@@ -1559,8 +1561,13 @@ ul li{
 #qrcode .uk-modal-dialog{
     width:420px;
 }
-
-.popup-gallery .swiper-container {
+/* nút pre trên slide nhỏ */
+.popup-gallery .swiper-container .swiper-button-next,
+.popup-gallery .swiper-container .swiper-button-prev{
+    display: none;
+}
+/* cái này là ảnh slide nhỏ */
+/* .popup-gallery .swiper-container {
     margin-bottom: 10px;
 }
 
@@ -1594,7 +1601,7 @@ ul li{
     box-shadow: inset 0 0 10px rgba(44,44,44,.1);
     background: #fff;
     padding:20px;
-}
+} */
 
 .product-specs{
     font-weight: 500;
@@ -2753,3 +2760,49 @@ bottom-support-online .animated.infinite {
     }
 }
 /* LOGIN */
+/* Slide trong Detail Product Start*/
+.popup-gallery {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.swiper-container {
+    width: 100%;
+    height: auto;
+    margin-bottom: 15px;
+}
+
+.big-pic .swiper-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 8px;
+}
+
+.swiper-container-thumbs {
+    padding-top: 10px;
+    width: 100%;
+  overflow: hidden;
+}
+
+.pic-list .swiper-slide {
+    width: 80px !important;
+    height: 80px;
+    margin-right: 10px;
+    opacity: 0.6;
+    transition: all 0.3s ease;
+}
+
+.pic-list .swiper-slide-thumb-active {
+    opacity: 1;
+    border: 2px solid red;
+    border-radius: 4px;
+}
+
+.pic-list .swiper-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 5px;
+}
+

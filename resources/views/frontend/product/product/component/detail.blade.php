@@ -54,7 +54,7 @@
                 </div>
                 
                 <div class="product-specs">
-                    <div class="spec-row">Mã sản phẩm: <strong>{{ $product->code }}</strong></div>
+                    {{-- <div class="spec-row">Mã sản phẩm: <strong>{{ $product->code }}</strong></div> --}}
                     <div class="spec-row">Tình Trạng: <strong>Còn hàng</strong></div>
                 </div>
 
