@@ -28,7 +28,7 @@
 					}
 				}
 			});
-		});
+		}); 
 	}
 
 	HT.changeQuantity = () => {
