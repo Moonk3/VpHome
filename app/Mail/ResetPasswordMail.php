@@ -39,6 +39,7 @@ class ResetPasswordMail extends Mailable
     {
         return new Content(
             view: 'frontend.auth.customer.recover',
+            // with: ['email' => $this->data]
         );
     }
 

@@ -19,7 +19,7 @@ class AuthController extends FrontendController
     protected $agencyService;
     public function __construct(
         CustomerService $customerService,
-        AgencyService $agencyService,
+        AgencyService $agencyService
     ){
         $this->customerService = $customerService;
         $this->agencyService = $agencyService;

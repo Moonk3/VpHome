@@ -23,7 +23,7 @@ class CustomerController extends FrontendController
     public function __construct(
         CustomerService $customerService,
         ConstructRepository $constructRepository,
-        ConstructService $constructService,
+        ConstructService $constructService
 
     ){
 
