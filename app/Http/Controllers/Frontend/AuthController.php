@@ -90,7 +90,20 @@ class AuthController extends FrontendController
         }
         return redirect()->route('forgot.customer.password')->with('error','Gửi yêu cầu cập nhật mật khẩu không thành công, email không tồn tại trong hệ thống');
     }
-
+    // public function verifyCustomerEmail(Request $request){
+    //     $emailReset = $request->input('email');
+    //     $customer = Customer::where('email', $emailReset)->first();
+    
+    //     if (!is_null($customer)) {
+    //         Mail::to($emailReset)->send(new ResetPasswordMail($emailReset)); // ← dòng này nè
+    //         return redirect()->route('fe.auth.login')
+    //             ->with('success','Gửi yêu cầu cập nhật mật khẩu thành công, vui lòng truy cập email của bạn để cập nhật mật khẩu mới');
+    //     }
+    
+    //     return redirect()->route('forgot.customer.password')
+    //         ->with('error','Gửi yêu cầu cập nhật mật khẩu không thành công, email không tồn tại trong hệ thống');
+    // }
+    
 
     public function updatePassword(Request $request){
         $email = rtrim(urldecode($request->getQueryString('email')), '=');

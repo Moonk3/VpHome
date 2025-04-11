@@ -14,6 +14,7 @@ class ResetPasswordMail extends Mailable
 
 
     public $data;
+    public $email;
     /**
      * Create a new message instance.
      */
@@ -21,7 +22,10 @@ class ResetPasswordMail extends Mailable
     {
         $this->data = $data;
     }
-
+    // public function __construct($email)
+    // {
+    //     $this->email = $email;
+    // }
     /**
      * Get the message envelope.
      */
@@ -40,6 +44,7 @@ class ResetPasswordMail extends Mailable
         return new Content(
             view: 'frontend.auth.customer.recover',
             // with: ['email' => $this->data]
+            // with: ['email' => $this->email]
         );
     }
 
