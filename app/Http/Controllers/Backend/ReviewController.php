@@ -56,10 +56,12 @@ class ReviewController extends Controller
         $this->authorize('modules', 'review.destroy');
         $config['seo'] = __('messages.review');
         $review = $this->reviewRepository->findById($id);
+        $widget = $this->reviewRepository->findById($id);
         $template = 'backend.review.delete';
         return view('backend.dashboard.layout', compact(
             'template',
             'review',
+            'widget',
             'config',
         ));
     }

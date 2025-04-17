@@ -24,7 +24,7 @@
                                     <input 
                                         type="text"
                                         name="name"
-                                        value="{{ old('name', ($widget->name) ?? '' ) }}"
+                                        value="{{ old('name', ($widget->description) ?? '' ) }}"
                                         class="form-control"
                                         placeholder=""
                                         autocomplete="off"
@@ -39,7 +39,10 @@
         </div>
        
         <div class="text-right mb15">
-            <button class="btn btn-danger" type="submit" name="send" value="send">Xóa dữ liệu</button>
+            <button class="btn btn-danger" type="submit" name="send" value="send">Xóa bình luận</button>
+        </div>
+        <div class="text-right mb15">
+            <a href="{{ route('review.index') }}" class="btn btn-success" type="submit" name="send" value="send">Quay lại</a>
         </div>
     </div>
 </form>
