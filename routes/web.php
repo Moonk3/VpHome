@@ -62,6 +62,8 @@ use App\Http\Controllers\Ajax\ConstructController as AjaxConstructController;
 use App\Http\Controllers\Ajax\CustomerController as AjaxCustomerController;
 
 use App\Http\Controllers\ChatbotController;
+// use App\Http\Controllers\ContactController;
+use App\Http\Controllers\Backend\ContactController;
 
 //@@useController@@
 
@@ -277,6 +279,15 @@ Route::group(['middleware' => ['admin','locale','backend_default_locale']], func
       Route::get('{id}/delete', [ReviewController::class, 'delete'])->where(['id' => '[0-9]+'])->name('review.delete');
       
    });
+//    Route::group(['prefix' => 'contacts'], function () {
+//       // bây giờ Laravel sẽ gọi Backend\ContactController@index
+//       Route::get('index', [ContactController::class, 'index'])
+//            ->name('contacts.index');
+//   });
+Route::group(['prefix' => 'contacts'], function() {
+   Route::get('index', [ContactController::class, 'index'])->name('contacts.index');
+});
+
 
    Route::group(['prefix' => 'menu'], function () {
       Route::get('index', [MenuController::class, 'index'])->name('menu.index');
@@ -493,3 +504,5 @@ Route::post('login', [AuthController::class, 'login'])->name('auth.login');
 // Route::post('/chatbot', [ChatbotController::class, 'chat']);
 // Route::post('/chatbot', [ChatbotController::class, 'handleChat'])->name('chatbot.send');
 Route::post('/chatbot', [ChatbotController::class, 'chat'])->name('chatbot.send'); 
+
+Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');

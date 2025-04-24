@@ -30,7 +30,8 @@
                         
                     </div>
                     <div class="uk-width-large-1-2">
-                        <form onsubmit="return false;" action="" method="post" class="uk-form form contact-form">
+                        <form action="{{ route('contact.store') }}" method="POST" class="uk-form form contact-form">
+                            @csrf
                             <div class="heading-form">Liên hệ ngay với chúng tôi để nhận tư vấn tốt Nhất</div>
                             <div class="uk-grid uk-grid-medium">
                                 <div class="uk-width-large-1-2 mb20">
@@ -60,11 +61,11 @@
                                 </div>
                                 <div class="uk-width-large-1-2 ">
                                     <div class="form-row">
-                                        <input type="text" name="phone" class="input-text" placeholder="Chủ đề">
+                                        <input type="text" name="subject" class="input-text" placeholder="Chủ đề">
                                     </div>
                                 </div>
                             </div>
-                            <textarea style="padding:10px;" name="" id="" placeholder="Nội dung" class=""></textarea>
+                            <textarea style="padding:10px;" name="message" id="" placeholder="Nội dung" class=""></textarea>
                              <button type="submit" name="send" value="create">Liên Hệ Ngay</button>
                         </form>
                     </div>

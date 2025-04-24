@@ -144,6 +144,17 @@ return [
             ]
         ],
         [
+            'title' => 'QL Liên hệ',
+            'icon' => 'fa fa-envelope',
+            'name' => ['contacts'],
+            'subModule' => [
+                [
+                    'title' => 'QL Liên hệ',
+                    'route' => 'contacts/index'
+                ]
+            ]
+        ],
+        [
             'title' => 'QL Nhóm Thành Viên',
             'icon' => 'fa fa-user',
             'name' => ['user','permission'],
