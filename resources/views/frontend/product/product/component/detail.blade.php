@@ -77,15 +77,18 @@
                                         <div class="plus quantity-button">+</div>
                                     </div>
                                     <div class="btn-group uk-flex uk-flex-middle">
+                                        {{-- <div class="btn-item btn-1 addToCart" data-id="{{ $product->id }}">
+                                            <a href="" title="">Muangay</a>
+                                        </div> --}}
                                         <div class="btn-item btn-1 addToCart" data-id="{{ $product->id }}">
-                                            <a href="" title="">Mua ngay</a>
+                                            <button type="button" class="btn-muangay">Muangay</button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="btn-item btn-1 addToCart mobile" data-id="{{ $product->id }}">
-                                <a href="" title="">Mua ngay</a>
-                            </div>
+                            {{-- <div class="btn-item btn-1 addToCart mobile" data-id="{{ $product->id }}">
+                                <a href="" title="">Muangay</a>
+                            </div> --}}
                         </div>
                     </div>
                     <div class="uk-width-large-1-2">
@@ -224,3 +227,23 @@
 <input type="hidden" class="attributeCatalogue" value="{{ json_encode($attributeCatalogue) }}">
 <input type="hidden" class="productCanonical" value="{{ write_url($product->canonical) }}">
 
+<script>
+    const isCustomerLoggedIn = {{ auth('customer')->check() ? 'true' : 'false' }};
+
+    document.addEventListener("DOMContentLoaded", function () {
+        const muaNgayButtons = document.querySelectorAll(".btn-muangay");
+
+        muaNgayButtons.forEach(button => {
+            button.addEventListener("click", function (e) {
+                e.preventDefault();
+
+                if (!isCustomerLoggedIn) {
+                    window.location.href = "{{ route('fe.auth.login') }}";
+                } else {
+                    // alert("Đã login! Bắt đầu xử lý mua ngay...");
+                    // Viết thêm logic xử lý mua tại đây nếu cần
+                }
+            });
+        });
+    });
+</script>

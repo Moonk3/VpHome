@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\FrontendController;
 use Illuminate\Http\Request;
+use App\Models\Contact;
 // use App\Services\Interfaces\ContactServiceInterface as ContactService;
 // use App\Repositories\Interfaces\ContactRepositoryInterface as ContactRepository;
 
@@ -43,7 +44,20 @@ class ContactController extends FrontendController
             'system',
         ));
     }
-
+    public function store(Request $request)
+    {
+        $validated = $request->validate([
+            'fullname' => 'required|string|max:255',
+            'phone' => 'required|string|max:20',
+            'email' => 'required|email|max:255',
+            'subject' => 'nullable|string|max:255',
+            'message' => 'required|string',
+        ]);
+    
+        Contact::create($validated);
+    
+        return back()->with('success', 'Cảm ơn bạn đã liên hệ. Chúng tôi sẽ phản hồi sớm nhất!');
+    }
     private function config(){
         return [
             'language' => $this->language,

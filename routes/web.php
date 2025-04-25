@@ -64,7 +64,7 @@ use App\Http\Controllers\Ajax\CustomerController as AjaxCustomerController;
 use App\Http\Controllers\ChatbotController;
 // use App\Http\Controllers\ContactController;
 use App\Http\Controllers\Backend\ContactController;
-
+// use App\Http\Controllers\Frontend\ContactController;
 //@@useController@@
 
 /*
@@ -286,9 +286,25 @@ Route::group(['middleware' => ['admin','locale','backend_default_locale']], func
 //   });
 Route::group(['prefix' => 'contacts'], function() {
    Route::get('index', [ContactController::class, 'index'])->name('contacts.index');
+   // Route hiển thị form phản hồi
+   Route::get('{id}/reply', [ContactController::class, 'showReplyForm'])->name('contacts.reply');
+
+   // Route xử lý việc gửi phản hồi
+   Route::post('{id}/reply', [ContactController::class, 'sendReply'])->name('contacts.reply.send');
 });
 
+// Route::prefix('admin/contacts')->group(function () {
+//    Route::get('index', [BackendContactController::class, 'index'])->name('contacts.index');
+//    Route::get('{id}/reply', [BackendContactController::class, 'showReplyForm'])->name('contacts.reply');
+//    Route::post('{id}/reply', [BackendContactController::class, 'sendReply'])->name('contacts.reply.send');
+// });
+Route::post('/contact/store', [FeContactController::class, 'store'])->name('contact.store');
+Route::get('lien-he', [FeContactController::class, 'index'])
+     ->name('contact.index');
 
+// Xử lý POST form Liên hệ
+Route::post('lien-he', [FeContactController::class, 'store'])
+     ->name('contact.store');
    Route::group(['prefix' => 'menu'], function () {
       Route::get('index', [MenuController::class, 'index'])->name('menu.index');
       Route::get('create', [MenuController::class, 'create'])->name('menu.create');
@@ -505,4 +521,4 @@ Route::post('login', [AuthController::class, 'login'])->name('auth.login');
 // Route::post('/chatbot', [ChatbotController::class, 'handleChat'])->name('chatbot.send');
 Route::post('/chatbot', [ChatbotController::class, 'chat'])->name('chatbot.send'); 
 
-Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
+// Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
