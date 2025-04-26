@@ -110,31 +110,84 @@ class CartService  implements CartServiceInterface
     }
 
 
-    public function order($request, $system){
-        DB::beginTransaction();
-        try{
+    // public function order($request, $system){
+
+    //     // DB::beginTransaction();
+    //     try{
+    //         DB::beginTransaction();
+    //         $payload = $this->request($request);
+    //         $order = $this->orderRepository->create($payload, ['products']);
+    //         if($order->id > 0){
+    //             $this->createOrderProduct($payload, $order, $request);
+    //             $this->mail($order, $system);
+    //             // Cart::instance('shopping')->destroy();
+    //             DB::commit();
+    //             Cart::destroy(); // Xoá giỏ sau khi chắc chắn thành công
+    //         return true;
+    //         }
+    //     //     DB::commit();
+    //     //     Cart::destroy(); // Xoá giỏ sau khi chắc chắn thành công
+    //     // return true;
+    //         // return [
+    //         //     'order' => $order,
+    //         //     'flag' => TRUE,
+    //         // ];
+    //     }catch(\Exception $e ){
+    //         DB::rollBack();
+    //         Log::error($e->getMessage());
+    //         // echo $e->getMessage();die();
+    //         // return [
+    //         //     'order' => null,
+    //         //     'flag' => false,
+    //         // ];
+    //         return false;
+    //     }
+    // }
+    public function order($request, $system)
+    {
+        try {
+            DB::beginTransaction();
             $payload = $this->request($request);
             $order = $this->orderRepository->create($payload, ['products']);
-            if($order->id > 0){
+    
+            if ($order->id > 0) {
                 $this->createOrderProduct($payload, $order, $request);
                 $this->mail($order, $system);
-                Cart::instance('shopping')->destroy();
+                DB::commit();
+    
+                if ($order->payment == 'cod') {
+                    Cart::destroy(); // Thanh toán COD: xóa giỏ luôn
+                    return [
+                        'order' => $order,
+                        'flag' => true,
+                        'message' => 'Đặt hàng thành công', // Có thể thêm message tùy cần
+                    ];
+                } else {
+                    // Thanh toán online: KHÔNG xóa giỏ, chuyển hướng tới cổng thanh toán
+                    return [
+                        'order' => $order,
+                        'flag' => true,
+                        'redirect' => true, // Thêm cờ để Controller biết xử lý redirect
+                    ];
+                }
             }
-            DB::commit();
-            return [
-                'order' => $order,
-                'flag' => TRUE,
-            ];
-        }catch(\Exception $e ){
+    
             DB::rollBack();
-            // Log::error($e->getMessage());
-            echo $e->getMessage();die();
+            return [
+                'order' => null,
+                'flag' => false,
+            ];
+        } catch (\Exception $e) {
+            DB::rollBack();
+            Log::error($e->getMessage());
+    
             return [
                 'order' => null,
                 'flag' => false,
             ];
         }
     }
+    
 
     private function mail($order, $sytem){
         $to = $order->email;

@@ -65,6 +65,7 @@ use App\Http\Controllers\ChatbotController;
 // use App\Http\Controllers\ContactController;
 use App\Http\Controllers\Backend\ContactController;
 // use App\Http\Controllers\Frontend\ContactController;
+use App\Http\Controllers\Frontend\AccountOrderController ;
 //@@useController@@
 
 /*
@@ -172,8 +173,12 @@ Route::get('ajax/distribution/getMap', [AjaxDistributionController::class, 'getM
 Route::get('return/vnpay'.config('apps.general.suffix'), [VnpayController::class, 'vnpay_return'])->name('vnpay.momo_return');
 Route::get('return/vnpay_ipn'.config('apps.general.suffix'), [VnpayController::class, 'vnpay_ipn'])->name('vnpay.vnpay_ipn');
 
-Route::get('return/momo'.config('apps.general.suffix'), [MomoController::class, 'momo_return'])->name('momo.momo_return');
-Route::get('return/ipn'.config('apps.general.suffix'), [MomoController::class, 'vnpay_ipn'])->name('momo.momo_ipn');
+// Route::get('return/momo'.config('apps.general.suffix'), [MomoController::class, 'momo_return'])->name('momo.momo_return');
+// Route::get('return/ipn'.config('apps.general.suffix'), [MomoController::class, 'vnpay_ipn'])->name('momo.momo_ipn');
+// Route::get('momo/callback', [CartController::class, 'momoCallback'])->name('momo.callback');
+Route::get('return/momo'.config('apps.general.suffix'),
+    [CartController::class, 'momoCallback']
+)->name('momo.callback');
 
 Route::get('paypal/success'.config('apps.general.suffix'), [PaypalController::class, 'success'])->name('paypal.success');
 Route::get('paypal/cancel'.config('apps.general.suffix'), [PaypalController::class, 'cancel'])->name('paypal.cancel');
@@ -301,6 +306,12 @@ Route::group(['prefix' => 'contacts'], function() {
 Route::post('/contact/store', [FeContactController::class, 'store'])->name('contact.store');
 Route::get('lien-he', [FeContactController::class, 'index'])
      ->name('contact.index');
+
+//Xem đơn hàng của khách hàng
+Route::middleware(['auth'])->group(function () {
+   Route::get('account/orders', [AccountOrderController::class, 'index'])->name('customer.orders.index');
+   Route::get('account/orders/{code}', [AccountOrderController::class, 'show'])->name('customer.orders.show');
+});
 
 // Xử lý POST form Liên hệ
 Route::post('lien-he', [FeContactController::class, 'store'])

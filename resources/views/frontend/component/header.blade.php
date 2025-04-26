@@ -49,9 +49,14 @@
                             </div>
                         </div>
                         {{-- note --}}
-                        <div class="header-hotline">
+                        {{-- <div class="header-hotline">
                             <div class="text">Hotline</div>
                             <div class="hotline-number">{{ $system['contact_hotline'] }}</div>
+                        </div> --}}
+                        <div class="header-cart">
+                            <div class="uk-flex uk-flex-middle">
+                                <a href="{{ route('customer.orders.index') }}" class="fa fa-shopping-bag cart-text">Đơn hàng</a>
+                            </div>
                         </div>
                     </div>
                 </div>
