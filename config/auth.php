@@ -35,15 +35,34 @@ return [
     |
     */
 
-    'guards' => [
+    // 'guards' => [
+    //     'web' => [
+    //         'driver' => 'session',
+    //         'provider' => 'users',
+    //     ],
+
+    //     'customer' => [
+    //         'driver' => 'session',
+    //         'provider' => 'customers'
+    //     ],
+
+    //     'agency' => [
+    //         'driver' => 'session',
+    //         'provider' => 'agencys'
+    //     ]
+
+    // ], 27/04/2025
+'guards' => [
         'web' => [
             'driver' => 'session',
             'provider' => 'users',
+            'session' => 'session_web'
         ],
 
         'customer' => [
             'driver' => 'session',
-            'provider' => 'customers'
+            'provider' => 'customers',
+            'session' => 'session_customer'
         ],
 
         'agency' => [
@@ -52,7 +71,6 @@ return [
         ]
 
     ],
-
     /*
     |--------------------------------------------------------------------------
     | User Providers

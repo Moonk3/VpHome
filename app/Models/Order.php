@@ -58,5 +58,9 @@ class Order extends Model
     public function provinces(){
         return $this->hasMany(Province::class, 'code', 'province_id');
     }
-
+    public function customer()
+    {
+        return $this->belongsTo(Customer::class);
+    }
+    
 }

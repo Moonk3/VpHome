@@ -70,5 +70,9 @@ class Customer extends Authenticatable
     public function sources(){
         return $this->belongsTo(Source::class, 'source_id', 'id');
     }
-
+    public function customer()
+    {
+        return $this->belongsTo(Customer::class);
+    }
+    
 }

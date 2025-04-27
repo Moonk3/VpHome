@@ -64,8 +64,17 @@ use App\Http\Controllers\Ajax\CustomerController as AjaxCustomerController;
 use App\Http\Controllers\ChatbotController;
 // use App\Http\Controllers\ContactController;
 use App\Http\Controllers\Backend\ContactController;
+// use App\Http\Controllers\Frontend\OrderController;
 // use App\Http\Controllers\Frontend\ContactController;
 use App\Http\Controllers\Frontend\AccountOrderController ;
+use App\Http\Controllers\Buyer\BuyerAuthController;
+use App\Http\Controllers\Buyer\BuyerController;
+use App\Http\Controllers\Seller\DashboardController as SellerDashboardController;
+use App\Http\Controllers\Seller\Product\ProductController as SellerProductController;
+
+use App\Http\Controllers\Seller\OrderController as SellerOrderController;
+use App\Http\Controllers\Seller\SellerController;
+use App\Http\Controllers\Ajax\ViettelPostController;
 //@@useController@@
 
 /*
@@ -86,10 +95,8 @@ Route::get('crawlerUpdate', [CrawlerController::class, 'crawlerUpdate'])->name('
 Route::get('crawlerProduct', [CrawlerController::class, 'crawlerProduct'])->name('crawler.product');
 Route::get('crawlerUpdateProduct', [CrawlerController::class, 'updateProduct'])->name('crawler.product.update');
 
-
 Route::get('tim-kiem'.config('apps.general.suffix'), [FeProductCatalogueController::class, 'search'])->name('product.catalogue.search');
 Route::get('lien-he'.config('apps.general.suffix'), [FeContactController::class, 'index'])->name('fe.contact.index');
-
 
 /* CUSTOMER  */ 
 Route::get('customer/login'.config('apps.general.suffix'), [FeAuthController::class, 'index'])->name('fe.auth.login'); 
@@ -100,10 +107,8 @@ Route::get('customer/password/email'.config('apps.general.suffix'), [FeAuthContr
 Route::get('customer/register'.config('apps.general.suffix'), [FeAuthController::class, 'register'])->name('customer.register');
 Route::post('customer/reg'.config('apps.general.suffix'), [FeAuthController::class, 'registerAccount'])->name('customer.reg');
 
-
 Route::get('customer/password/update'.config('apps.general.suffix'), [FeAuthController::class, 'updatePassword'])->name('customer.update.password');
 Route::post('customer/password/change'.config('apps.general.suffix'), [FeAuthController::class, 'changePassword'])->name('customer.password.reset');
-
 
 Route::group(['middleware' => ['customer']], function () {
    Route::get('customer/profile'.config('apps.general.suffix'), [FeCustomerController::class, 'profile'])->name('customer.profile');
@@ -116,7 +121,6 @@ Route::group(['middleware' => ['customer']], function () {
    Route::get('customer/warranty/check'.config('apps.general.suffix'), [FeCustomerController::class, 'warranty'])->name('customer.check.warranty');
    Route::post('customer/warranty/active', [FeCustomerController::class, 'active'])->name('customer.active.warranty');
 });
-
 
 
 /* AGENCY  */
@@ -152,7 +156,6 @@ Route::group(['middleware' => ['agency']], function () {
 
 
 
-
 Route::get('he-thong-phan-phoi'.config('apps.general.suffix'), [FeDistributionController::class, 'index'])->name('distribution.list.index');
 Route::get('danh-sach-yeu-thich'.config('apps.general.suffix'), [FeProductCatalogueController::class, 'wishlist'])->name('product.catalogue.wishlist');
 Route::get('thanh-toan'.config('apps.general.suffix'), [CartController::class, 'checkout'])->name('cart.checkout');
@@ -162,7 +165,6 @@ Route::post('cart/create', [CartController::class, 'store'])->name('cart.store')
 Route::get('cart/{code}/success'.config('apps.general.suffix'), [CartController::class, 'success'])->name('cart.success')->where(['code' => '[0-9]+']);
 
 /* FRONTEND SYSTEM */
-
 
 Route::get('ajax/post/video', [AjaxPostController::class, 'video'])->name('post.video');
 Route::post('ajax/product/wishlist', [AjaxProductController::class, 'wishlist'])->name('product.wishlist');
@@ -183,7 +185,6 @@ Route::get('return/momo'.config('apps.general.suffix'),
 Route::get('paypal/success'.config('apps.general.suffix'), [PaypalController::class, 'success'])->name('paypal.success');
 Route::get('paypal/cancel'.config('apps.general.suffix'), [PaypalController::class, 'cancel'])->name('paypal.cancel');
 
-
 /* FRONTEND AJAX ROUTE */
 Route::post('ajax/review/create', [AjaxReviewController::class, 'create'])->name('ajax.review.create');
 Route::get('ajax/product/loadVariant', [AjaxProductController::class, 'loadVariant'])->name('ajax.loadVariant');
@@ -194,10 +195,8 @@ Route::post('ajax/cart/delete', [AjaxCartController::class, 'delete'])->name('aj
 Route::get('ajax/location/getLocation', [LocationController::class, 'getLocation'])->name('ajax.location.index');
 Route::post('updatePermission', [CustomerCatalogueController::class, 'updatePermission'])->name('customer.catalogue.updatePermission');
 
-
 Route::get('ajax/dashboard/findModelObject', [AjaxDashboardController::class, 'findModelObject'])->name('ajax.dashboard.findModelObject');
 /* BACKEND ROUTES */
-
 
 Route::group(['middleware' => ['admin','locale','backend_default_locale']], function () {
    Route::get('dashboard/index', [DashboardController::class, 'index'])->name('dashboard.index');
@@ -212,7 +211,6 @@ Route::group(['middleware' => ['admin','locale','backend_default_locale']], func
       Route::get('{id}/delete', [UserController::class, 'delete'])->where(['id' => '[0-9]+'])->name('user.delete');
       Route::delete('{id}/destroy', [UserController::class, 'destroy'])->where(['id' => '[0-9]+'])->name('user.destroy');
    });
-
 
    Route::group(['prefix' => 'user/catalogue'], function () {
       Route::get('index', [UserCatalogueController::class, 'index'])->name('user.catalogue.index');
@@ -235,7 +233,6 @@ Route::group(['middleware' => ['admin','locale','backend_default_locale']], func
       Route::get('{id}/delete', [CustomerController::class, 'delete'])->where(['id' => '[0-9]+'])->name('customer.delete');
       Route::delete('{id}/destroy', [CustomerController::class, 'destroy'])->where(['id' => '[0-9]+'])->name('customer.destroy');
    });
-
 
    Route::group(['prefix' => 'customer/catalogue'], function () {
       Route::get('index', [CustomerCatalogueController::class, 'index'])->name('customer.catalogue.index');
@@ -308,10 +305,14 @@ Route::get('lien-he', [FeContactController::class, 'index'])
      ->name('contact.index');
 
 //Xem đơn hàng của khách hàng
-Route::middleware(['auth'])->group(function () {
-   Route::get('account/orders', [AccountOrderController::class, 'index'])->name('customer.orders.index');
-   Route::get('account/orders/{code}', [AccountOrderController::class, 'show'])->name('customer.orders.show');
-});
+// Route::middleware(['auth'])->group(function () {
+//    Route::get('account/orders', [AccountOrderController::class, 'index'])->name('customer.orders.index');
+//    Route::get('account/orders/{code}', [AccountOrderController::class, 'show'])->name('customer.orders.show');
+// });
+// Route::middleware('auth:customer')->group(function() {
+//    Route::get('/don-hang', [OrderController::class, 'index'])->name('customer.orders.index');
+//    Route::get('/don-hang/{code}', [OrderController::class, 'show'])->name('customer.orders.show');
+// });
 
 // Xử lý POST form Liên hệ
 Route::post('lien-he', [FeContactController::class, 'store'])
@@ -330,7 +331,6 @@ Route::post('lien-he', [FeContactController::class, 'store'])
       Route::get('{languageId}/{id}/translate', [MenuController::class, 'translate'])->where(['languageId' => '[0-9]+', 'id' => '[0-9]+'])->name('menu.translate');
       Route::post('{languageId}/saveTranslate', [MenuController::class, 'saveTranslate'])->where(['languageId' => '[0-9]+'])->name('menu.translate.save');
    });
-
 
    Route::group(['prefix' => 'post/catalogue'], function () {
       Route::get('index', [PostCatalogueController::class, 'index'])->name('post.catalogue.index');
@@ -405,7 +405,6 @@ Route::post('lien-he', [FeContactController::class, 'store'])
       Route::delete('{id}/destroy', [DistributionController::class, 'destroy'])->where(['id' => '[0-9]+'])->name('distribution.destroy');
       
    });
-
 
    Route::group(['prefix' => 'promotion'], function () {
       Route::get('index', [PromotionController::class, 'index'])->name('promotion.index');
@@ -483,7 +482,6 @@ Route::post('lien-he', [FeContactController::class, 'store'])
       Route::get('warranty', [ConstructionController::class, 'warranty'])->name('construction.warranty');
    });
 
-
    Route::group(['prefix' => 'report'], function () {
       Route::get('time', [ReportController::class, 'time'])->name('report.time');
       Route::get('product', [ReportController::class, 'product'])->name('report.product');
@@ -491,7 +489,6 @@ Route::post('lien-he', [FeContactController::class, 'store'])
    });
 
 //@@new-module@@
-
 
 
 
@@ -522,7 +519,6 @@ Route::post('lien-he', [FeContactController::class, 'store'])
    Route::get('ajax/dashboard/findInformationObject', [AjaxDashboardController::class, 'findInformationObject'])->name('ajax.findInformationObject');
 });
 
-
 Route::get('admin', [AuthController::class, 'index'])->name('auth.admin')->middleware('login');
 Route::get('logout', [AuthController::class, 'logout'])->name('auth.logout');
 Route::post('login', [AuthController::class, 'login'])->name('auth.login');
@@ -533,3 +529,69 @@ Route::post('login', [AuthController::class, 'login'])->name('auth.login');
 Route::post('/chatbot', [ChatbotController::class, 'chat'])->name('chatbot.send'); 
 
 // Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
+/* BUYER ROUTES */
+
+// Route::group(['middleware' => ['customer']], function () {
+//     Route::get('customer/list', [OrderController::class, 'list'])->name('list.index');
+//     Route::get('customer/list/{id}/detail', [OrderController::class, 'orderDetail'])->name('customer.list.detail');
+//    //  Route::get('ajax/buyer/getDistrict', [ViettelPostController::class, 'getDistrict'])->name('ajax.order.getDistrict');
+//    //  Route::get('ajax/buyer/getWard', [ViettelPostController::class, 'getWard'])->name('ajax.order.getWard');
+
+// });
+
+// Route::middleware('auth:customer')->group(function () {
+//    Route::get('/orders', [OrderController::class, 'index'])->name('customer.orders');
+//    Route::get('/order/{id}', [OrderController::class, 'show'])->name('customer.order.detail');
+// });
+/* BUYER ROUTES */
+
+Route::get('buyer/login', [BuyerAuthController::class, 'login'])->name('buyer.login');
+
+Route::post('buyer/authenticate', [BuyerAuthController::class, 'authenticate'])->name('buyer.authenticate');
+
+Route::get('buyer/signup', [BuyerAuthController::class, 'signup'])->name('buyer.signup');
+
+Route::post('buyer/register', [BuyerAuthController::class, 'register'])->name('buyer.register');
+
+Route::get('buyer/google/redirect', [BuyerAuthController::class, 'redirectToGoogle'])->name('buyer.google.redirect');
+
+Route::get('buyer/google/callback', [BuyerAuthController::class, 'handleGoogleCallback'])->name('buyer.google.callback');
+
+Route::get('buyer/facebook/redirect', [BuyerAuthController::class, 'redirectToFacebook'])->name('buyer.facebook.redirect');
+
+Route::get('buyer/facebook/callback', [BuyerAuthController::class, 'handleFacebookCallback'])->name('buyer.facebook.callback');
+
+Route::group(['middleware' => ['buyer']], function () {
+    Route::get('buyer/profile', [BuyerController::class, 'profile'])->name('buyer.profile');
+    Route::post('buyer/profile/update', [BuyerController::class, 'updateProfile'])->name('buyer.profile.update');
+    Route::get('buyer/profile/password', [BuyerController::class, 'password'])->name('buyer.profile.password');
+    Route::post('buyer/profile/password/update', [BuyerController::class, 'updatePassword'])->name('buyer.profile.password.update');
+    Route::get('buyer/logout', [BuyerAuthController::class, 'logout'])->name('buyer.logout');
+    Route::get('buyer/order', [BuyerController::class, 'order'])->name('buyer.order');
+    Route::get('buyer/order/{id}/detail', [BuyerController::class, 'orderDetail'])->name('buyer.order.detail');
+   //  Route::get('ajax/buyer/getDistrict', [ViettelPostController::class, 'getDistrict'])->name('ajax.order.getDistrict');
+   //  Route::get('ajax/buyer/getWard', [ViettelPostController::class, 'getWard'])->name('ajax.order.getWard');
+
+    Route::get('seller', [SellerDashboardController::class, 'index'])->name('seller');
+
+    Route::get('seller/product/index', [SellerProductController::class, 'index'])->name('seller.product.index');
+
+    Route::group(['prefix' => 'seller/product'], function () {
+        Route::get('index', [SellerProductController::class, 'index'])->name('seller.product.index');
+        Route::get('create', [SellerProductController::class, 'create'])->name('seller.product.create');
+        Route::post('store', [SellerProductController::class, 'store'])->name('seller.product.store');
+        Route::get('{id}/edit', [SellerProductController::class, 'edit'])->where(['id' => '[0-9]+'])->name('seller.product.edit');
+        Route::post('{id}/update', [SellerProductController::class, 'update'])->where(['id' => '[0-9]+'])->name('seller.product.update');
+        Route::get('{id}/delete', [SellerProductController::class, 'delete'])->where(['id' => '[0-9]+'])->name('seller.product.delete');
+        Route::delete('{id}/destroy', [SellerProductController::class, 'destroy'])->where(['id' => '[0-9]+'])->name('seller.product.destroy');
+    });
+
+    Route::group(['prefix' => 'seller/order'], function () {
+        Route::get('index', [SellerOrderController::class, 'index'])->name('seller.order.index');
+        Route::get('{id}/detail', [SellerOrderController::class, 'detail'])->where(['id' => '[0-9]+'])->name('seller.order.detail');
+    });
+
+});
+
+
+

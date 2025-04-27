@@ -2,7 +2,6 @@
 
 namespace App\Providers;
 
-// use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
 
@@ -23,13 +22,20 @@ class AuthServiceProvider extends ServiceProvider
     public function boot(): void
     {
         $this->registerPolicies();
+
         Gate::define('modules', function($user, $permisionName){
-            if($user->publish == 0) return false;
-            $permission = $user->user_catalogues->permissions;
-            if($permission->contains('canonical', $permisionName)){
-                return true;
+            // Kiểm tra nếu user không phải admin, hoặc không có catalogue
+            if (!$user || !$user->user_catalogues || $user->publish == 0) {
+                return false; // Khách hàng không có quyền
             }
-            return false;
+
+            // Nếu người dùng có quyền truy cập, kiểm tra permissions
+            $permission = $user->user_catalogues->permissions;
+            if ($permission && $permission->contains('canonical', $permisionName)) {
+                return true; // Người dùng có quyền
+            }
+
+            return false; // Không có quyền
         });
     }
 }

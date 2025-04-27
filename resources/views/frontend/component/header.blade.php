@@ -55,9 +55,10 @@
                         </div> --}}
                         <div class="header-cart">
                             <div class="uk-flex uk-flex-middle">
-                                <a href="{{ route('customer.orders.index') }}" class="fa fa-shopping-bag cart-text">Đơn hàng</a>
+                                <a href="" class="fa fa-shopping-bag cart-text">Đơn hàng</a>
                             </div>
                         </div>
+                        
                     </div>
                 </div>
             </div>

@@ -291,5 +291,12 @@ class OrderRepository extends BaseRepository implements OrderRepositoryInterface
         ->whereDate('orders.created_at', '<=', $endDate)
         ->get();
     }
-
+    //27/04/2025
+    public function findOrderByBuyer($buyer){
+        return $this->model->where('customer_id', $buyer->id)->get();
+    }
+    
+    public function findOrderDetailByBuyer($buyer, $orderId){
+        return $this->model->where('customer_id', $buyer->id)->find($orderId);
+    }
 }
