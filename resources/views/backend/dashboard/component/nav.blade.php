@@ -2,7 +2,7 @@
     <nav class="navbar navbar-static-top white-bg" role="navigation" style="margin-bottom: 0">
         <div class="navbar-header">
             <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
-            <form role="search" class="navbar-form-custom" action="search_results.html">
+            <form role="search" class="navbar-form-custom" id="search-form">
                 <div class="form-group">
                     <input type="text" placeholder="Search for something..." class="form-control" name="top-search" id="top-search">
                 </div>
@@ -16,7 +16,7 @@
                     @endforeach
                 </div>
             </li>
-            <li class="dropdown">
+            {{-- <li class="dropdown">
                 <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
                     <i class="fa fa-envelope"></i>  <span class="label label-warning">16</span>
                 </a>
@@ -110,7 +110,7 @@
                         </div>
                     </li>
                 </ul>
-            </li>
+            </li> --}}
 
 
             <li>
@@ -126,3 +126,26 @@
         </ul>
     </nav>
 </div>
+<script>
+    // JavaScript để tìm kiếm và làm nổi bật mục sidebar
+    document.getElementById('top-search').addEventListener('input', function() {
+        var searchQuery = this.value.toLowerCase();  // Lấy giá trị tìm kiếm và chuyển thành chữ thường
+        var sidebarItems = document.querySelectorAll('.sidebar-item');  // Lấy tất cả các mục trong sidebar
+
+        sidebarItems.forEach(function(item) {
+            var title = item.getAttribute('data-title');  // Lấy tên mục trong sidebar
+            if (title.indexOf(searchQuery) !== -1) {
+                item.classList.add('active');  // Nếu tìm thấy, làm nổi bật mục
+            } else {
+                item.classList.remove('active');  // Nếu không tìm thấy, bỏ dấu nổi bật
+            }
+        });
+    });
+</script>
+<style>
+    .sidebar-item.active {
+    background-color: #f0f0f0;  /* Màu nền khi mục được tìm thấy */
+    color: #000;  /* Màu chữ khi mục được tìm thấy */
+}
+
+</style>

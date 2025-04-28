@@ -8,7 +8,7 @@
             <div class="panel-body">
                 <div class="uk-flex uk-flex-middle">    
                     <form action="" class="uk-form subcribe-form">
-                        <input type="text" name="phone" value="" placeholder="Nhập vào số điện thoại">
+                        <input type="text" name="email" value="" placeholder="Nhập email của bạn">
                         <button type="submit" name="submit" value="submit">Đăng ký</button>
                     </form>
                     <div class="social">
