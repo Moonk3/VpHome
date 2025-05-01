@@ -4,7 +4,7 @@
             @include('backend.dashboard.component.perpage')
             <div class="action">
                 <div class="uk-flex uk-flex-middle">
-                    @include('backend.dashboard.component.filterPublish')
+                    {{-- @include('backend.dashboard.component.filterPublish') --}}
                     @include('backend.dashboard.component.keyword')
                     <a href="{{ route('promotion.create') }}" class="btn btn-danger"><i class="fa fa-plus mr5"></i>Thêm mới khuyến mại</a>
                 </div>

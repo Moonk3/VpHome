@@ -15,7 +15,7 @@
             </div>
             <div class="action">
                 <div class="uk-flex uk-flex-middle">
-                   @include('backend.dashboard.component.filterPublish')
+                   {{-- @include('backend.dashboard.component.filterPublish') --}}
                     <select name="customer_catalogue_id" class="form-control mr10 setupSelect2">
                         <option value="0" selected="selected">Chọn Nhóm Thành Viên</option>
                         @foreach($customerCatalogues as $key => $val)

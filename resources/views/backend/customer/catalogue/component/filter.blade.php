@@ -15,7 +15,7 @@
             </div>
             <div class="action">
                 <div class="uk-flex uk-flex-middle">
-                    @include('backend.dashboard.component.filterPublish')
+                    {{-- @include('backend.dashboard.component.filterPublish') --}}
                     @include('backend.dashboard.component.keyword')
                     <div class="uk-flex uk-flex-middle">
                         {{-- <a href="{{ route('customer.catalogue.permission') }}" class="btn btn-warning mr10"><i class="fa fa-key mr5"></i>Phân Quyền</a> --}}
