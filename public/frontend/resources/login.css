@@ -24,7 +24,7 @@
     font-weight: bold;
     text-align: center;
     margin-bottom: 20px;
-    color: #d32f2f;
+    color: #4CAF50;
 }
 
 .input-text {
@@ -38,7 +38,7 @@
 }
 
 .input-text:focus {
-    border-color: #d32f2f;
+    border-color: #4CAF50;
     box-shadow: 0 0 5px rgba(211, 47, 47, 0.5);
 }
 
@@ -48,7 +48,7 @@
 
 #login-btn  {
     width: 100%;
-    background: #d32f2f;
+    background: #4CAF50;
     color: #ffffff;
     padding: 12px;
     border: none;
@@ -59,7 +59,7 @@
     
     /* position: absolute;
     height:33px;
-    background: #da2229;
+    background: #4CAF50;
     text-transform: uppercase;
     color:#fff;
     font-weight: 600;
@@ -71,12 +71,12 @@
 }
 
 button:hover {
-    background: #b71c1c;
+    background: #4CAF50;
 }
 
 .forgot-password a, 
 .register-box a {
-    color: #d32f2f;
+    color: #4CAF50;
     text-decoration: none;
     transition: 0.3s;
 }
@@ -121,7 +121,7 @@ button:hover {
     font-weight: bold;
     text-align: center;
     margin-bottom: 20px;
-    color: #d32f2f;
+    color: #4CAF50;
 }
 
 .form-row {
@@ -137,7 +137,7 @@ button:hover {
 }
 
 .input-text:focus {
-    border-color: #d32f2f;
+    border-color: #4CAF50;
     outline: none;
 }
 
@@ -148,7 +148,7 @@ button:hover {
 
 .btn-primary {
     width: 100%;
-    background: #d32f2f;
+    background: #4CAF50;
     color: #ffffff;
     padding: 12px;
     border: none;
@@ -159,7 +159,7 @@ button:hover {
 }
 
 .btn-primary:hover {
-    background: #b71c1c;
+    background: #4CAF50;
 }
 /* RESGITER - END */
 /* PROFILE - START */
@@ -221,7 +221,7 @@ button:hover {
 
 /* Nút lưu thông tin */
 button[name="send"] {
-    background: #da2229;
+    background: #4CAF50;
     color: #fff;
     border: none;
     padding: 10px 15px;
@@ -232,10 +232,21 @@ button[name="send"] {
 }
 
 button[name="send"]:hover {
-    background: #da2229;
+    background: #4CAF50;
 }
 .profile-form{
     width: 500px;
     margin: 0 auto;
 }
 /* PROFILE - END */
+#reset-pass{
+    width: 100%;
+    background: #4CAF50;
+    color: #ffffff;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}

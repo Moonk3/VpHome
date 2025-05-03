@@ -4,10 +4,37 @@
 	var timer;
 
 
+	// HT.popupSwiperSlide = () => {
+	// 	document.querySelectorAll(".popup-gallery").forEach(popup => {
+	// 		var swiper = new Swiper(popup.querySelector(".swiper-container"), {
+	// 			loop: true,
+	// 			autoplay: {
+	// 				delay: 2000,
+	// 				disableOnInteraction: false,
+	// 			},
+	// 			pagination: {
+	// 				el: '.swiper-pagination',
+	// 			},
+	// 			navigation: {
+	// 				nextEl: '.swiper-button-next',
+	// 				prevEl: '.swiper-button-prev',
+	// 			},
+	// 			thumbs: {
+	// 				swiper: {
+	// 					el: popup.querySelector('.swiper-container-thumbs'),
+	// 					slidesPerView: 4,
+	// 					spaceBetween: 10,
+	// 					slideToClickedSlide: true,
+	// 				}
+	// 			}
+	// 		});
+	// 	}); 
+	// }
 	HT.popupSwiperSlide = () => {
 		document.querySelectorAll(".popup-gallery").forEach(popup => {
 			var swiper = new Swiper(popup.querySelector(".swiper-container"), {
 				loop: true,
+				slidesPerView: 'auto', // ✅ Để bạn có thể tự đặt width
 				autoplay: {
 					delay: 2000,
 					disableOnInteraction: false,
@@ -28,9 +55,9 @@
 					}
 				}
 			});
-		}); 
+		});
 	}
-
+	
 	HT.changeQuantity = () => {
 		
 		$(document).on('click','.quantity-button', function(){

@@ -22,7 +22,7 @@
                                         <span class="error-message">* {{ $errors->first('email') }}</span>
                                     @endif
                                 </div>
-                                <button type="submit" class="btn block full-width m-b">Gửi mật khẩu mới</button>  
+                                <button id ="reset-pass" type="submit" class="btn block full-width m-b">Gửi mật khẩu mới</button>  
                         </form>
                         <p class="m-t mt5">
                             <small>{{ $system['homepage_brand'] }} © 2025</small>

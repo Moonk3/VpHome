@@ -1,8 +1,8 @@
-<div class="panel-subcribe">
-    <div class="uk-container uk-container-center">
+<div class="panel-general page">
+    {{-- <div class="uk-container uk-container-center">
         <div class="uk-flex uk-flex-middle uk-flex-space-between">
             <div class="panel-head">
-                <h2 class="heading-3"><span>Đăng ký nhận thông tin</span></h2>
+                <h2 class="heading-3"><span>Liên hệ nhận thông tin</span></h2>
                 <div class="description">Để nhận những thông tin khuyến mãi, chiết khấu hấp dẫn</div>
             </div>
             <div class="panel-body">
@@ -21,55 +21,56 @@
                 </div>
             </div>
         </div>
-    </div>
-</div>
-<footer class="footer">
-    <div class="upper">
-        <div class="uk-container uk-container-center">
-            <div class="footer-information">
-                <div class="footer-logo"><img src="{{ $system['homepage_logo'] }}" alt=""></div>
-                <div class="company-name">{{ $system['homepage_company'] }}</div>
-                @if(isset($menu['footer-menu']))
-                <div class="uk-grid uk-grid-medium">
-                   @foreach($menu['footer-menu'] as $key => $val)
-                   @php
-                       $name = $val['item']->languages->first()->pivot->name;
-                   @endphp
-                    <div class="uk-width-large-1-4">
-                        <div class="footer-menu">
-                            <div class="ft-heading">{{ $name }}</div>
-                            @if(count($val['children']))
-                            <ul class="uk-list uk-clearfix">
-                                @foreach($val['children'] as $item)
-                                @php
-                                    $name = $item['item']->languages->first()->pivot->name;
-                                    $canonical = write_url($item['item']->languages->first()->pivot->canonical);
-                                @endphp
-                                <li><a href="{{ $canonical }}" title="{{ $name }}">{{ $name }}</a></li>
-                                @endforeach
-                            </ul>
-                            @endif
+    </div> --}}
+    <footer class="footer">
+        <div class="upper">
+            <div class="uk-container uk-container-center">
+                <div class="footer-information">
+                    <div class="footer-logo"><img src="{{ $system['homepage_logo'] }}" alt=""></div>
+                    <div class="company-name">{{ $system['homepage_company'] }}</div>
+                    @if(isset($menu['footer-menu']))
+                    <div class="uk-grid uk-grid-medium">
+                       @foreach($menu['footer-menu'] as $key => $val)
+                       @php
+                           $name = $val['item']->languages->first()->pivot->name;
+                       @endphp
+                        <div class="uk-width-large-1-4">
+                            <div class="footer-menu">
+                                <div class="ft-heading">{{ $name }}</div>
+                                @if(count($val['children']))
+                                <ul class="uk-list uk-clearfix">
+                                    @foreach($val['children'] as $item)
+                                    @php
+                                        $name = $item['item']->languages->first()->pivot->name;
+                                        $canonical = write_url($item['item']->languages->first()->pivot->canonical);
+                                    @endphp
+                                    <li><a href="{{ $canonical }}" title="{{ $name }}">{{ $name }}</a></li>
+                                    @endforeach
+                                </ul>
+                                @endif
+                            </div>
+                        </div>
+                        @endforeach
+                        <div class="uk-width-large-1-4">
+                            <div class="footer-contact">
+                                <div class="ft-heading">Thông tin liên hệ</div>
+                                <p>Địa chỉ: {{ $system['contact_address'] }}</p>
+                                <p>Số điện thoại: {{ $system['contact_hotline'] }}</p>
+                                <p>Email: {{ $system['contact_website'] }}</p>
+                            </div>
                         </div>
                     </div>
-                    @endforeach
-                    <div class="uk-width-large-1-4">
-                        <div class="footer-contact">
-                            <div class="ft-heading">Thông tin liên hệ</div>
-                            <p>Địa chỉ: {{ $system['contact_address'] }}</p>
-                            <p>Số điện thoại: {{ $system['contact_hotline'] }}</p>
-                            <p>Email: {{ $system['contact_website'] }}</p>
-                        </div>
-                    </div>
+                    @endif
                 </div>
-                @endif
             </div>
         </div>
-    </div>
-    <div class="copyright uk-text-center">
-        © Copyright 2025, All Rights Reserved - Design by:  Le Van Minh
-        {{ $system['homepage_brand'] }}
-    </div>
-</footer>
+        <div class="copyright uk-text-center">
+            © Copyright 2025, All Rights Reserved - Design by:  Le Van Minh
+            {{ $system['homepage_brand'] }}
+        </div>
+    </footer>
+</div>
+
 <div class="bottom-support-online">
     <div class="support-content">
         <a href="tel:0905620486" class="phone-call-now" rel="nofollow">
