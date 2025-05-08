@@ -1,4 +1,4 @@
-@php
+{{-- @php
     $attributeQueryString = explode(',', request()->get('attribute_id'));
 @endphp
 @if(!is_null($attributeCatalogue))
@@ -19,6 +19,7 @@
                 >
                     @if($val->name == 'Màu sắc')
                         <img src="{{ $attr->image }}" alt="{{ $attr->name }}">
+
                     @else
                         {{ $attr->name }}
                     @endif
@@ -28,10 +29,10 @@
             </div>
             @endif
         </div>
-    </div><!-- .attribute -->
+    </div>
     @endforeach
 @endif
 
 <input type="hidden" name="product_id" value="{{ $product->id }}">
 <input type="hidden" name="language_id" value="{{ $config['language'] }}">
-<input type="hidden" name="product_gallery" value="{{ $product->album }}">
+<input type="hidden" name="product_gallery" value="{{ $product->album }}"> --}}

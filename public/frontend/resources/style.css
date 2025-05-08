@@ -310,28 +310,28 @@ ul li{
 
 .header-cart img{
     height:19px;
-    
     filter:brightness(0) invert(1);
 }
-.header-cart .cart-mini{
+.header-cart .cart-mini {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* giữ nguyên các thuộc tính còn lại */
     -webkit-box-shadow: 0 0 6px rgba(62,59,59,.56) inset;
     -moz-box-shadow: 0 0 6px rgba(62, 59, 59, .56) inset;
     box-shadow: 0 0 6px rgba(62,59,59,.56) inset;
-    display: inline-block;
-    margin-left: 5px;
+    margin-left: 10px;
     line-height: 40px;
     width: 40px;
     height: 40px;
     border-radius: 100%;
-    -webkit-border-radius: 100%;
-    -moz-border-radius: 100%;
     text-align: center;
     font-weight: 400;
     font-size: 13px;
     position: relative;
     background: #4CAF50;
-    margin-left:10px;
 }
+
 /* .header-cart .cart-mini .number{
     position: absolute;
     left:50%;
@@ -717,7 +717,7 @@ ul li{
 }
 
 .main-heading{
-    padding-left:130px;
+    padding-left:25px;
     position: relative;
 }
 
@@ -1837,6 +1837,9 @@ ul li{
     border:1px solid #d9d9d9;
     padding:5px 20px;
 }
+.uk-grid-medium {
+    margin-left: -25px;
+}
 .panel-cart .nice-select{
     width:100% !important;
     border-radius: 100px;
@@ -2813,6 +2816,8 @@ bottom-support-online .animated.infinite {
     height: 325px; /* hoặc giá trị phù hợp với thiết kế */
     object-fit: cover;
   }
-#btn-muangay{
-    border-color: #28a745;
+.btn-muangay{
+    border: none;
+    background-color: #4CAF50;
+    cursor: pointer;
 }

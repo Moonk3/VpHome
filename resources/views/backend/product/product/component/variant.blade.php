@@ -1,4 +1,4 @@
-
+{{-- 
 <div class="ibox variant-box">
     <div class="ibox-title">
         <div>
@@ -64,7 +64,7 @@
                         </div>
                     </div>
                     <div class="col-lg-8">
-                        {{-- <input type="text" name="" disabled class="fake-variant form-control"> --}}
+                       
 
                         <select name="attribute[{{ $valAttr }}][]" class="selectVariant variant-{{ $valAttr }} form-control" multiple data-catid="{{ $valAttr }}" id=""></select>
 
@@ -109,4 +109,4 @@
     var attribute = '{{ base64_encode(json_encode(old('attribute') ?? (isset($product->attribute) ? $product->attribute : []))) }}';
     var variant = '{{ base64_encode(json_encode(old('variant') ?? (isset($product->variant) ? json_decode($product->variant, TRUE) : []))) }}';
 
-</script>
+</script> --}}

@@ -77,12 +77,12 @@
                                         <div class="plus quantity-button">+</div>
                                     </div>
                                     <div class="btn-group uk-flex uk-flex-middle">
-                                        <div class="btn-item btn-1 addToCart" data-id="{{ $product->id }}">
-                                            <a href="" title="">Muangay</a>
-                                        </div>
                                         {{-- <div class="btn-item btn-1 addToCart" data-id="{{ $product->id }}">
-                                            <button type="button" class="">Muangay</button>
+                                            <a href="" title="" class="btn-muangay">Muangay</a>
                                         </div> --}}
+                                        <div class="btn-item btn-1 addToCart" data-id="{{ $product->id }}">
+                                            <button type="button" class="btn-muangay">Muangay</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -180,7 +180,7 @@
         </div>
     </div>
 
-    <div class="product-related">
+    {{-- <div class="product-related">
         <div class="uk-container uk-container-center">
             <div class="panel-product">
                 <div class="main-heading">
@@ -219,7 +219,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
    
 </div>
 

@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Services\PostService;
 use App\Services\Interfaces\WidgetServiceInterface;
 use App\Repositories\Interfaces\WidgetRepositoryInterface as WidgetRepository;
 use App\Repositories\Interfaces\PromotionRepositoryInterface as PromotionRepository;

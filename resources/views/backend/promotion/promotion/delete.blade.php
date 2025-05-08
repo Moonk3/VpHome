@@ -41,5 +41,8 @@
         <div class="text-right mb15">
             <button class="btn btn-danger" type="submit" name="send" value="send">Xóa dữ liệu</button>
         </div>
+        <div class="text-right mb15">
+            <a href="{{ route('promotion.index') }}" class="btn btn-success" type="submit" name="send" value="send">Quay lại</a>
+        </div>
     </div>
 </form>

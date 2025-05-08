@@ -59,14 +59,14 @@ return [
                     'title' => 'QL Sản phẩm',
                     'route' => 'product/index'
                 ],
-                [
-                    'title' => 'QL Loại thuộc tính',
-                    'route' => 'attribute/catalogue/index'
-                ],
-                [
-                    'title' => 'QL thuộc tính',
-                    'route' => 'attribute/index'
-                ],
+                // [
+                //     'title' => 'QL Loại thuộc tính',
+                //     'route' => 'attribute/catalogue/index'
+                // ],
+                // [
+                //     'title' => 'QL thuộc tính',
+                //     'route' => 'attribute/index'
+                // ],
 
             ]
         ],
@@ -82,14 +82,14 @@ return [
             ]
         ],
         [
-            'title' => 'QL Nhóm Khách hàng',
+            'title' => 'QL Khách hàng',
             'icon' => 'fa fa-user',
             'name' => ['customer'],
             'subModule' => [
-                [
-                    'title' => 'QL Nhóm Khách hàng',
-                    'route' => asset('customer/catalogue/index')
-                ],
+                // [
+                //     'title' => 'QL Nhóm Khách hàng',
+                //     'route' => asset('customer/catalogue/index')
+                // ],
                 [
                     'title' => 'QL Khách hàng',
                     'route' => 'customer/index'
@@ -105,10 +105,10 @@ return [
                     'title' => 'QL Khuyến mại',
                     'route' => 'promotion/index'
                 ],
-                [
-                    'title' => 'QL nguồn khách',
-                    'route' => 'source/index'
-                ],
+                // [
+                //     'title' => 'QL nguồn khách',
+                //     'route' => 'source/index'
+                // ],
             ]
         ],
         // [
@@ -200,10 +200,10 @@ return [
             'icon' => 'fa fa-file',
             'name' => ['language', 'generate', 'system', 'widget'],
             'subModule' => [
-                [
-                    'title' => 'QL Ngôn ngữ',
-                    'route' => 'language/index'
-                ],
+                // [
+                //     'title' => 'QL Ngôn ngữ',
+                //     'route' => 'language/index'
+                // ],
                 // [
                 //     'title' => 'QL Module',
                 //     'route' => 'generate/index'

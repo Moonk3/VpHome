@@ -232,3 +232,24 @@
 <input type="hidden" class="reviewable_type" value="{{ $reviewable }}">
 <input type="hidden" class="reviewable_id" value="{{ $model->id }}">
 <input type="hidden" class="review_parent_id" value="0">
+
+<script>
+    const isCustomerLoggedIn = {{ auth('customer')->check() ? 'true' : 'false' }};
+
+    document.addEventListener("DOMContentLoaded", function () {
+        const muaNgayButtons = document.querySelectorAll(".btn-review");
+
+        muaNgayButtons.forEach(button => {
+            button.addEventListener("click", function (e) {
+                e.preventDefault();
+
+                if (!isCustomerLoggedIn) {
+                    window.location.href = "{{ route('fe.auth.login') }}";
+                } else {
+                    // alert("Đã login! Bắt đầu xử lý mua ngay...");
+                    // Viết thêm logic xử lý mua tại đây nếu cần
+                }
+            });
+        });
+    });
+</script>

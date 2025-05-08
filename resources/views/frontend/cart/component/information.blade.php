@@ -33,7 +33,7 @@
                 </div>
             </div>
         </div>
-        {{-- <div class="form-row mb20">
+        <div class="form-row mb20">
             <input 
                 type="text"
                 name="email"
@@ -41,7 +41,7 @@
                 placeholder="Nhập vào Email"
                 class="input-text"
             >
-        </div> --}}
+        </div>
         <div class="form-row mb20">
             <input 
                 type="text"
@@ -51,7 +51,7 @@
                 class="input-text"
             >
         </div>
-        <div class="uk-grid uk-grid-medium mb20">
+        <div class="uk-grid uk-grid-medium mb20" >
             <div class="uk-width-large-1-3">
                 <select name="province_id" id="" class="province location setupSelect2" data-target="districts">
                     <option value="0">[Chọn Thành Phố]</option>
