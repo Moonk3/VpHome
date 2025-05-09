@@ -33,7 +33,7 @@
                 </div>
             </div>
         </div>
-        <div class="form-row mb20">
+        {{-- <div class="form-row mb20">
             <input 
                 type="text"
                 name="email"
@@ -41,13 +41,13 @@
                 placeholder="Nhập vào Email"
                 class="input-text"
             >
-        </div>
+        </div> --}}
         <div class="form-row mb20">
             <input 
                 type="text"
                 name="address"
                 value="{{ old('address') }}"
-                placeholder="Nhập vào địa chỉ: ví dụ đường Lạc Long Quân..."
+                placeholder="Nhập vào địa chỉ: ví dụ đường Trung Văn..."
                 class="input-text"
             >
         </div>

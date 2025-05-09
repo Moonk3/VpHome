@@ -3,6 +3,7 @@
    var HT = {}; // Khai báo là 1 đối tượng
    var timer = null
    var _token = $('meta[name="csrf-token"]').attr('content');
+   
 
 /* MAIN VARIABLE */
 

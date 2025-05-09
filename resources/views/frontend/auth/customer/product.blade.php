@@ -34,7 +34,7 @@
                                             $name = $val->languages->first()->pivot->name;
                                         @endphp
                                         <tr>
-                                            <td>{{ $val->code }}</td>
+                                            <td>{{ $val->pivot->code }}</td>
                                             <td>{{ $name }}</td>
                                             <td>{{ $val->pivot->color }}</td>
                                             <td>{{ $val->pivot->quantity }}</td>

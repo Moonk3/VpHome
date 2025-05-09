@@ -158,7 +158,11 @@ Route::group(['middleware' => ['agency']], function () {
 
 Route::get('he-thong-phan-phoi'.config('apps.general.suffix'), [FeDistributionController::class, 'index'])->name('distribution.list.index');
 Route::get('danh-sach-yeu-thich'.config('apps.general.suffix'), [FeProductCatalogueController::class, 'wishlist'])->name('product.catalogue.wishlist');
-Route::get('thanh-toan'.config('apps.general.suffix'), [CartController::class, 'checkout'])->name('cart.checkout');
+Route::middleware(['auth:customer'])->group(function () {
+    Route::get('thanh-toan' . config('apps.general.suffix'), [CartController::class, 'checkout'])->name('cart.checkout');
+   //  Route::post('them-gio-hang', [CartController::class, 'addToCart'])->name('cart.add');
+});
+// Route::get('thanh-toan'.config('apps.general.suffix'), [CartController::class, 'checkout'])->name('cart.checkout');
 Route::get('{canonical}'.config('apps.general.suffix'), [RouterController::class, 'index'])->name('router.index')->where('canonical', '[a-zA-Z0-9-]+');
 Route::get('{canonical}/trang-{page}'.config('apps.general.suffix'), [RouterController::class, 'page'])->name('router.page')->where('canonical', '[a-zA-Z0-9-]+')->where('page', '[0-9]+');
 Route::post('cart/create', [CartController::class, 'store'])->name('cart.store');
